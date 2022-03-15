@@ -8,7 +8,7 @@ import routes from "./routes.js"
 dotenv.config();
 
 const PORT = process.env.PORT || 8080;
-const mongodb_url = "mongodb+srv://gowtham:RW2UIq66Tx8xdjXV@cluster0.5uw4z.mongodb.net/club-recrit?retryWrites=true&w=majority";
+const mongodb_url = process.env.MONGODB_URL;
 
 mongoose
   .connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
