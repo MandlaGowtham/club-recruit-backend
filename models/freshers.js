@@ -32,6 +32,4 @@ FresherSchema.methods.comparePassword = async function(password) {
   return res;
 };
 
-var Freshers = mongoose.model('Freshers', FresherSchema);
-
-export default Freshers;
+export default mongoose.model('Freshers', FresherSchema);

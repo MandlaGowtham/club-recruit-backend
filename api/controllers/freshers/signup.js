@@ -1,4 +1,4 @@
-import { otpGenerator, sendEmail } from "../../../utils/email.js";
+import { otpGenerator, MailService } from "../../../utils/email.js";
 import { sendError } from "../../../utils/notify.js";
 import Freshers from "../../../models/freshers.js";
 import VerifyOTP from "../../../models/verifyOTP.js";
@@ -36,7 +36,7 @@ export const signup = async (req, res) => {
     await newFresher.save();
 
     console.log("newFresher.email : ", newFresher.email);
-    sendEmail(newFresher.email, createdOTP);
+    MailService(newFresher.email, createdOTP);
 
     res.json({ fresherId: newFresher._id, message: "OTP sent to email" });
   } catch (error) {

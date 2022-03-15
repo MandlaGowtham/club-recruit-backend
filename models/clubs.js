@@ -1,22 +1,33 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 
-const clubSchema = mongoose.Schema({
-  email: {
+const ClubSchema = mongoose.Schema(
+  {
+    email: {
       type: String,
       required: true,
       trim: true,
-      unique: true
-  },
-  password: {
+      unique: true,
+    },
+    password: {
       type: String,
       require: true,
+    },
+    name: {
+      type: String,
+    },
+    interviewsDate: {
+      type: Date,
+    },
   },
-  interviewsDate: Date,
-  
-}, {
-  timestamps: true
-})
+  {
+    timestamps: true,
+  }
+);
 
-var Clubs = mongoose.model('Clubs', clubSchema);
+ClubSchema.methods.comparePassword = async function (password) {
+  const res = bcrypt.compareSync(password, this.password);
+  return res;
+};
 
-export default Clubs;
+export default mongoose.model("Clubs", ClubSchema);

@@ -8,7 +8,7 @@ export function otpGenerator() {
   return otp;
 }
 
-export function sendEmail(email, OTP) {
+export function MailService(email, OTP) {
   try {
     mailTransport().sendMail(
       {

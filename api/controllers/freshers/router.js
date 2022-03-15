@@ -7,4 +7,4 @@ export default express
   .Router()
   .post("/signup", validate, validator, signup)
   .post("/verify", verify)
-  .post("/login", login);
+  .post("/login", validate, validator, login);
